@@ -1,0 +1,11 @@
+/* filepath: /D:/VSCode_Projects/myWebsite/static/customized.css */
+.custom-brand {
+  position: absolute;
+  left: 20%; /* Adjust the value as needed */
+}
+
+.custom-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
