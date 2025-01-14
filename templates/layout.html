@@ -16,8 +16,11 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
             <!--Navbar brand-->
-            <a class="navbar-brand custom-brand" href="#">BHS Hack Club</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand custom-brand" href="#">
+                <img src="/static/bhs.ico" alt="BHS Hack Club" style="height: 30px; margin-right: 10px;">
+                BHS Hack Club
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!--Navbar contents-->
@@ -40,7 +43,7 @@
         </nav>
 
         <!-- Main Content Container -->
-        <div>
+        <div class="main-content">
             {% block content %}
             <!-- Child templates will inject content here -->
             {% endblock %}

@@ -1,11 +1,23 @@
 /* filepath: /D:/VSCode_Projects/myWebsite/static/customized.css */
 .custom-brand {
   position: absolute;
-  left: 20%; /* Adjust the value as needed */
+  left: 15%; /* Adjust the value as needed */
 }
 
 .custom-nav-container {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.navbar {
+  border-bottom: 2px solid #ccc; /* Adjust the color and thickness as needed */
+}
+
+.main-content {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: black;
 }
