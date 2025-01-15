@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+body {
+  background-color:azure;
+}
+
 .navbar {
   border-bottom: 2px solid #ccc; /* Adjust the color and thickness as needed */
 }
