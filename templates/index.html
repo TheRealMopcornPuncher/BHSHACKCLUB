@@ -24,12 +24,14 @@
     import { RenderPass } from '/static/js/postprocessing/RenderPass.js';
     import { UnrealBloomPass } from '/static/js/postprocessing/UnrealBloomPass.js';
 
+    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 30;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.physicallyCorrectLights = true; // Ensure proper lighting and bloom rendering
 
     // Add the renderer's canvas to the #three-container
     const threeContainer = document.getElementById('three-container');
@@ -38,26 +40,40 @@
     // Postprocessing setup
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
+
     const bloomPass = new UnrealBloomPass(
         new THREE.Vector2(window.innerWidth, window.innerHeight),
         1.5, // strength
         0.4, // radius
-        0.85 // threshold
+        0.1 // threshold (lowered to make the bloom effect visible)
     );
     composer.addPass(bloomPass);
 
-    // Animation setup
-    const geometry = new THREE.SphereGeometry(0.1, 16, 16);
+    // Geometry and Material for each mesh
+    const geometry = new THREE.SphereGeometry(0.1, 8, 8); // Reduced segments for optimization
+    const material = new THREE.MeshStandardMaterial({
+        emissive: new THREE.Color(0x00ff00),
+        emissiveIntensity: 1.5,
+        metalness: 0.5,
+        roughness: 0.5
+    });
+
+    // Browser detection
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+    // Adjust grid size and spacing based on browser
+    const gridSize = isChrome ? 30 : 50; // Reduce grid size for Chrome
+    const spacing = isChrome ? 3 : 2;    // Increase spacing for Chrome
+
+    // Create individual meshes to handle many points
     const points = [];
-    const gridSize = 50;
-    const spacing = 1;
 
     for (let x = -gridSize / 2; x < gridSize / 2; x++) {
         for (let z = -gridSize / 2; z < gridSize / 2; z++) {
             const color = new THREE.Color(`hsl(${(x + z + 360) % 360}, 80%, 60%)`);
-            const material = new THREE.MeshBasicMaterial({ color });
             const point = new THREE.Mesh(geometry, material);
             point.position.set(x * spacing, 0, z * spacing);
+            point.material.emissive = color; // Set color for each mesh
             scene.add(point);
             points.push(point);
         }
@@ -66,17 +82,20 @@
     let time = 0;
     function animate() {
         time += 0.02;
+
         points.forEach((point) => {
             const x = point.position.x;
             const z = point.position.z;
             point.position.y = Math.sin((x + time) * 0.5) + Math.cos((z + time) * 0.5);
         });
+
+        // Render the scene with bloom effect
         composer.render();
         requestAnimationFrame(animate);
     }
     animate();
 
-    // Resize handling
+    // Resize handling for responsive design
     window.addEventListener('resize', () => {
         camera.aspect = threeContainer.offsetWidth / threeContainer.offsetHeight;
         camera.updateProjectionMatrix();
