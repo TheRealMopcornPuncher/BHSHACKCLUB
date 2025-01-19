@@ -33,11 +33,17 @@
 
             // Check for specific renderer information
             const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-            const renderer = debugInfo && gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+            const renderer = debugInfo
+                ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
+                : gl.getParameter(gl.RENDERER);
 
-            // Return false if the renderer contains terms indicating software rendering
-            return renderer && !/software/i.test(renderer);
+            console.log(`Renderer: ${renderer}`);
+
+            // Check for software rendering terms
+            const isSoftwareRendering = /swiftshader|software|webkit/i.test(renderer);
+            return !isSoftwareRendering;
         } catch (e) {
+            console.error('Error checking hardware acceleration:', e);
             return false;
         }
     }
@@ -45,7 +51,7 @@
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 2, 6); // Adjusted to view the grid properly
+    camera.position.set(0, 30, 10); // Adjusted to view the grid properly
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -62,20 +68,30 @@
 
     // Check if hardware acceleration is enabled
     const bloomEnabled = isHardwareAccelerated();
+    console.log(`Bloom Enabled: ${bloomEnabled}`);
     if (!bloomEnabled) {
         console.warn('Hardware acceleration not detected. Disabling bloom effect.');
     }
 
+
+    // Set up EffectComposer with proper render target configuration
     let composer = null;
     if (bloomEnabled) {
-        composer = new EffectComposer(renderer);
+        const renderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, {
+            format: THREE.RGBAFormat,
+            depthBuffer: true,
+        });
+        renderTarget.texture.minFilter = THREE.LinearFilter;
+
+        composer = new EffectComposer(renderer, renderTarget);
+        composer.setSize(window.innerWidth, window.innerHeight);
         composer.addPass(new RenderPass(scene, camera));
 
         const bloomPass = new UnrealBloomPass(
             new THREE.Vector2(window.innerWidth, window.innerHeight),
             1.5, // strength
             0.4, // radius
-            0.1 // threshold
+            0.1  // threshold
         );
         composer.addPass(bloomPass);
     }
@@ -134,6 +150,7 @@
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         if (bloomEnabled) composer.setSize(window.innerWidth, window.innerHeight);
     });
