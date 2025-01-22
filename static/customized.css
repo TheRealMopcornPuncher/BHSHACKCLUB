@@ -37,3 +37,33 @@ body{
   height: 100%;
   z-index: -1; /* Keep it in the background */
 }
+
+.typing-animation {
+  font-family: monospace;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em  solid white;
+  width: 16ch;
+  animation: typing 3s steps(24, end), blink-caret 0.75s step-end infinite;
+  line-height: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 16ch;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
