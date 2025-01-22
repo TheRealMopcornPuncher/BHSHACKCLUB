@@ -12,6 +12,7 @@
 
 body {
   background: none;
+  background-color: #000000;
 }
 
 .navbar {
@@ -23,10 +24,6 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-}
-
-body{
-  background-color: #000000;
 }
 
 #three-container {
