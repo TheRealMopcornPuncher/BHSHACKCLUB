@@ -1,24 +1,38 @@
 /* filepath: /D:/VSCode_Projects/myWebsite/static/customized.css */
+
+/* General Styles */
+body {
+  background: none;
+  background-color: #000000;
+}
+
+/* Navbar Styles */
+.navbar {
+  border-bottom: 2px solid #ccc; /* Adjust the color and thickness as needed */
+}
+
+/* Centered container class */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Full viewport height */
+}
+
+/* Brand Styles */
 .custom-brand {
   position: absolute;
   left: 15%; /* Adjust the value as needed */
 }
 
+/* Navigation Container Styles */
 .custom-nav-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-body {
-  background: none;
-  background-color: #000000;
-}
-
-.navbar {
-  border-bottom: 2px solid #ccc; /* Adjust the color and thickness as needed */
-}
-
+/* Main Content Styles */
 .main-content {
   justify-content: center;
   align-items: center;
@@ -74,6 +88,7 @@ body {
   color:azure;
   opacity: 0.8;
   background-color: black;
+  font-size: 1.1em;
 }
 
 @keyframes slide {
@@ -85,6 +100,19 @@ body {
   }
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .slide-up {
   animation: slide 1s ease;
+}
+
+.fade-in {
+  animation: fade-in 1s ease;
 }
