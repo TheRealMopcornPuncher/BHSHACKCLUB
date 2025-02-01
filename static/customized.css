@@ -42,7 +42,7 @@ body {
   overflow: hidden;
   border-right: 0.15em  solid white;
   width: 16ch;
-  animation: typing 3s steps(24, end), blink-caret 0.75s step-end infinite;
+  animation: typing 3s steps(28, end), blink-caret 0.75s step-end infinite;
   line-height: 2em;
 }
 
@@ -63,4 +63,28 @@ body {
   50% {
     border-color: white;
   }
+}
+
+.centered_text_box {
+  margin-top: 15%;
+  margin-bottom: 20px; 
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 20px; 
+  color:azure;
+  opacity: 0.8;
+  background-color: black;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slide 1s ease;
 }
