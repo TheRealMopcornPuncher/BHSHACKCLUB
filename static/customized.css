@@ -85,9 +85,8 @@ body {
   padding: 20px; 
   border: 1px solid #ccc; 
   border-radius: 20px; 
-  color:azure;
-  opacity: 0.8;
-  background-color: black;
+  color: azure;
+  background-color: rgba(0, 0, 0, 0.5); /* Opaque/see-through black */
   font-size: 1.1em;
 }
 
@@ -109,6 +108,19 @@ body {
   }
 }
 
+@keyframes card-slide {
+  0% {
+    transform: translateX(100%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0) rotate(360deg);
+  }
+}
+
+.card-slide {
+  animation: card-slide 0.5s linear;
+}
+
 .slide-up {
   animation: slide 1s ease;
 }
@@ -116,3 +128,14 @@ body {
 .fade-in {
   animation: fade-in 1s ease;
 }
+
+.business-card {
+  text-align: center; 
+  margin-top: 2em; 
+  margin-bottom: 2em; 
+  padding: 1em; 
+  border: 1px solid black; 
+  border-radius: 1em; 
+  background-color: #f0f0f0;
+}
+
