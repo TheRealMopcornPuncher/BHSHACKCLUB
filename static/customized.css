@@ -1,9 +1,20 @@
 /* filepath: /D:/VSCode_Projects/myWebsite/static/customized.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 /* General Styles */
 body {
   background: none;
   background-color: #000000;
+  overflow: hidden; /* Prevent scrolling */
 }
 
 /* Navbar Styles */
@@ -117,8 +128,26 @@ body {
   }
 }
 
+@keyframes card-jiggle {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
 .card-slide {
-  animation: card-slide 0.5s linear;
+  animation: card-slide 1s ease-out, card-jiggle 0.5s linear 1s; /* Play card-jiggle after card-slide */
 }
 
 .slide-up {
@@ -139,3 +168,66 @@ body {
   background-color: #f0f0f0;
 }
 
+.wrapper {
+  width: 90%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 40vh;
+  margin-top: 10vh;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -300px;
+  }
+}
+
+.item {
+  width: 16vw;
+  height: 20vh;
+  border-radius: 6px;
+  position: absolute;
+  left: max(calc(200px * 5), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.carousel:hover .item {
+  animation-play-state: paused;
+}
+
+.item img {
+  height: 40vh; /* Scale to 10% of viewport height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.item1 {
+  animation-delay: calc(30s / 5 * (5 - 1) * -1);
+}
+
+.item2 {
+  animation-delay: calc(30s / 5 * (5 - 2) * -1);
+}
+
+.item3 {
+  animation-delay: calc(30s / 5 * (5 - 3) * -1);
+}
+
+.item4 {
+  animation-delay: calc(30s / 5 * (5 - 4) * -1);
+}
+
+.item5 {
+  animation-delay: calc(30s / 5 * (5 - 5) * -1);
+}
