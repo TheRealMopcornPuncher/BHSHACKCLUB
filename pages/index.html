@@ -166,5 +166,20 @@
             if (bloomEnabled) composer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbarToggler = document.querySelector(".navbar-toggler");
+            var navbarBrand = document.querySelector(".navbar-brand");
+
+            navbarToggler.addEventListener("click", function() {
+                if (navbarBrand.classList.contains("d-none")) {
+                    navbarBrand.classList.remove("d-none");
+                } else {
+                    navbarBrand.classList.add("d-none");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

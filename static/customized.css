@@ -232,16 +232,10 @@ body {
   animation-delay: calc(30s / 5 * (5 - 5) * -1);
 }
 
-@media (max-width: 991.98px) {
-  .navbar-collapse.show .navbar-brand {
-      display: none; /* Hide the navbar-brand */
-  }
-
-  .navbar-collapse.show .navbar-brand img {
-      margin-right: 0; /* Remove the right margin from the image */
-  }
+.d-none {
+  display: none !important;
 }
 
 .about-page {
-  overflow: auto; /* Re-enable overflow */
+  overflow: auto !important;/* Re-enable overflow */
 }
