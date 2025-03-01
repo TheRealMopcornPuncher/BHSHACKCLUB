@@ -171,13 +171,16 @@
         document.addEventListener("DOMContentLoaded", function() {
             var navbarToggler = document.querySelector(".navbar-toggler");
             var navbarBrand = document.querySelector(".navbar-brand");
+            var navbarCollapse = document.querySelector("#navbarNav");
 
             navbarToggler.addEventListener("click", function() {
-                if (navbarBrand.classList.contains("d-none")) {
-                    navbarBrand.classList.remove("d-none");
-                } else {
-                    navbarBrand.classList.add("d-none");
-                }
+                setTimeout(function() {
+                    if (navbarCollapse.classList.contains("show")) {
+                        navbarBrand.classList.add("d-none");
+                    } else {
+                        navbarBrand.classList.remove("d-none");
+                    }
+                }, 300); // Delay to allow the collapse animation to complete
             });
         });
     </script>
