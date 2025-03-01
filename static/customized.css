@@ -234,13 +234,7 @@ body {
 
 @media (max-width: 991.98px) {
   .navbar-collapse.show .navbar-brand {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
-      width: 100%; /* Ensure it spans the width */
-      text-align: center; /* Center the text */
+      display: none; /* Hide the navbar-brand */
   }
 
   .navbar-collapse.show .navbar-brand img {
