@@ -6,9 +6,9 @@
     <meta name="description" content="The official BHS Hack Club website, programmed BY the BHS Hack Club!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='customized.css') }}">
+    <link rel="stylesheet" href="/static/customized.css">
     <link rel="icon" href="/static/bhs.ico" type="image/x-icon">
-    <title>{% block title %}My Website{% endblock %}</title>
+    <title>Club Resources</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
@@ -22,31 +22,42 @@
         <div class="collapse navbar-collapse justify-content-center custom-nav-container" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+                    <a class="nav-link" href="/index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/events' %}active{% endif %}" href="/events">Events</a>
+                    <a class="nav-link" href="/events">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/resources' %}active{% endif %}" href="/resources">Resources</a>
+                    <a class="nav-link active" href="/resources">Resources</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/about' %}active{% endif %}" href="/about">About us</a>
+                    <a class="nav-link" href="/about">About us</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <div class="main-content">
-        {% block content %}
-        {% endblock %}
+        <div class="center-container">
+            <div class="business-card card-slide">
+                <h1>Club Resources</h1>
+                <hr>
+                <p>
+                    <img src="/static/phone_icon.svg" alt="Phone Icon" style="width: 1em; height: 1em; vertical-align: middle;">
+                    Phone: +1 555 723 1123
+                </p>
+                <p>
+                    <img src="/static/mail_icon.svg" alt="Mail Icon" style="width: 1em; height: 1em; vertical-align: middle;">
+                    Email: emailAddress@gmail.com
+                </p>
+                <hr>
+                <p>Please reach out for any help or inquiries! (Within reason)</p>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    {% block scripts %}
-    {% endblock %}
 </body>
 </html>

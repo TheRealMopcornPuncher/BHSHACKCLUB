@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Connor Allison">
+    <meta name="description" content="The official BHS Hack Club website, programmed BY the BHS Hack Club!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/customized.css">
+    <link rel="icon" href="/static/bhs.ico" type="image/x-icon">
+    <title>{{ .Title | default "My Website" }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
+        <a class="navbar-brand custom-brand" href="#">
+            <img src="/static/bhs.ico" alt="BHS Hack Club" style="height: 30px; margin-right: 10px;">
+            BHS Hack Club
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center custom-nav-container" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    {{ $active := eq .URI.Path "/" }}
+                    <a class="nav-link{{ if $active }} active{{ end }}" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    {{ $active := eq .URI.Path "/events" }}
+                    <a class="nav-link{{ if $active }} active{{ end }}" href="/events">Events</a>
+                </li>
+                <li class="nav-item">
+                    {{ $active := eq .URI.Path "/resources" }}
+                    <a class="nav-link{{ if $active }} active{{ end }}" href="/resources">Resources</a>
+                </li>
+                <li class="nav-item">
+                    {{ $active := eq .URI.Path "/about" }}
+                    <a class="nav-link{{ if $active }} active{{ end }}" href="/about">About us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        {{ block "content" . }}{{ end }}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>
