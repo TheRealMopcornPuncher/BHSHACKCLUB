@@ -1,0 +1,10 @@
+{
+        admin unix//home/garbonzo/caddy-admin.sock
+}
+http://garbonzo.hackclub.app {
+        bind unix/.garbonzo.hackclub.app.webserver.sock|777
+        root * /home/garbonzo/pub
+        file_server {
+                hide .git .env
+        }
+}
