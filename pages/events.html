@@ -12,20 +12,20 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
-        <a class="navbar-brand custom-brand" href="#">
+        <a class="navbar-brand" href="#">
             <img src="/static/bhs.ico" alt="BHS Hack Club" style="height: 30px; margin-right: 10px;">
             BHS Hack Club
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center custom-nav-container" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/index">Home</a>
+                    <a class="nav-link active" href="/index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/events">Events</a>
+                    <a class="nav-link" href="/events">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/resources">Resources</a>
@@ -35,7 +35,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav>    
 
     <div class="main-content">
         <div style="display: flex; justify-content: center; align-items: top; margin-top: 5vh; color: white;">
@@ -53,22 +53,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var navbarToggler = document.querySelector(".navbar-toggler");
-            var navbarBrand = document.querySelector(".navbar-brand");
-            var navbarCollapse = document.querySelector("#navbarNav");
-    
-            navbarToggler.addEventListener("click", function() {
-                setTimeout(function() {
-                    if (navbarCollapse.classList.contains("show")) {
-                        navbarBrand.classList.add("d-none");
-                    } else {
-                        navbarBrand.classList.remove("d-none");
-                    }
-                }, 300); // Delay to allow the collapse animation to complete
-            });
-        });
-    </script>
 </body>
 </html>

@@ -10,13 +10,12 @@
     <link rel="icon" href="/static/bhs.ico" type="image/x-icon">
     <title>Welcome to BHS Hack Club</title>
 </head>
-<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
-        <a class="navbar-brand custom-brand" href="#">
+        <a class="navbar-brand" href="#">
             <img src="/static/bhs.ico" alt="BHS Hack Club" style="height: 30px; margin-right: 10px;">
             BHS Hack Club
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center custom-nav-container" id="navbarNav">
@@ -36,6 +35,7 @@
             </ul>
         </div>
     </nav>
+
 
     <div class="main-content">
         <div class="container centered_text_box slide-up">
@@ -164,24 +164,6 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
             if (bloomEnabled) composer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var navbarToggler = document.querySelector(".navbar-toggler");
-            var navbarBrand = document.querySelector(".navbar-brand");
-            var navbarCollapse = document.querySelector("#navbarNav");
-
-            navbarToggler.addEventListener("click", function() {
-                setTimeout(function() {
-                    if (navbarCollapse.classList.contains("show")) {
-                        navbarBrand.classList.add("d-none");
-                    } else {
-                        navbarBrand.classList.remove("d-none");
-                    }
-                }, 300); // Delay to allow the collapse animation to complete
-            });
         });
     </script>
 </body>
